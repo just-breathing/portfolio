@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const aboutMe = [
   "I'm a detail-oriented software engineer with hands-on experience building scalable, high-performance web and mobile applications using React, Next.js, TypeScript, and Expo.",
@@ -29,7 +29,7 @@ export const AnimatedString = ({ name }: { name: string }) => {
               custom={letterIndex}
               variants={{
                 hidden: { opacity: 0, y: -100 },
-                visible: (i) => ({
+                visible: () => ({
                   opacity: 1,
                   y: 0,
                   transition: {
@@ -83,7 +83,7 @@ export default function HeroSection() {
           className="text-center md:text-left"
         >
           <h1 className="text-5xl font-bold mb-4 text-white">
-            Hi, I'm <AnimatedString name="Sundeep Reddy Nallamilli" />
+            Hi, I &apos;m <AnimatedString name="Sundeep Reddy Nallamilli" />
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ export default function HeroSection() {
           <div className="flex  gap-4  justify-center md:justify-start">
             {socialLinks.map((link, index) => (
               <motion.a
-                key={link.name}
+                key={index}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"

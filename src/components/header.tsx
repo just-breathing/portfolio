@@ -22,7 +22,7 @@ export default function Header() {
         <ul className="flex space-x-4 md:space-x-8">
           {navItems.map((item, index) => (
             <motion.li
-              key={item}
+              key={index}
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{

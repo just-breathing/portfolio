@@ -1,16 +1,10 @@
 "use client";
 
 import { ExperienceItem, experiences } from "@/data";
-import {
-  motion,
-  useAnimation,
-  useInView,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 export default function Experience() {
-  const controls = useAnimation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const isSectionInView = useInView(sectionRef, { amount: 0.3 });
