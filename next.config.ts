@@ -15,7 +15,6 @@ const nextConfig: NextConfig = {
    *
    * @see https://nextjs.org/docs/app/api-reference/next-config-js/basePath
    */
-  assetPrefix: process.env.NODE_ENV === "production" ? `/${repoName}` : "",
   basePath: process.env.NODE_ENV === "production" ? `/${repoName}` : "",
 
   /**
