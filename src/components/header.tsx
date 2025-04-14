@@ -58,7 +58,7 @@ export default function Header() {
             }}
           >
             <a
-              href="/documents/resume.pdf"
+              href="/portfolio/documents/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
