@@ -1,6 +1,5 @@
 import Experience from "@/components/experience";
 import { GitHubStatsCard } from "@/components/githubStats";
-import Header from "@/components/header";
 import HeroSection from "@/components/home";
 
 export default function Home() {
