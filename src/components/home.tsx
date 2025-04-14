@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import SocialLinks from "./socialLinks";
 
 const aboutMe = [
   "I'm a detail-oriented software engineer with hands-on experience building scalable, high-performance web and mobile applications using React, Next.js, TypeScript, and Expo.",
@@ -33,9 +33,13 @@ export const AnimatedString = ({ name }: { name: string }) => {
                   opacity: 1,
                   y: 0,
                   transition: {
+                    type: "spring",
                     delay:
-                      (alphabet.indexOf(letter.toLocaleUpperCase()) + 1) * 0.1,
-                    duration: 0.5,
+                      (alphabet.indexOf(letter.toLocaleUpperCase()) + 1) *
+                      0.075,
+                    duration: 0.25,
+                    damping: 10,
+                    stiffness: 100,
                     ease: [0.16, 1, 0.3, 1],
                   },
                 }),
@@ -51,25 +55,6 @@ export const AnimatedString = ({ name }: { name: string }) => {
   );
 };
 export default function HeroSection() {
-  const socialLinks = [
-    {
-      icon: <FaGithub />,
-      url: "https://github.com/just-breathing",
-      name: "GitHub",
-    },
-    {
-      icon: <FaLinkedin />,
-      url: "https://www.linkedin.com/in/sundeepreddyn/",
-      name: "LinkedIn",
-    },
-    // { icon: <FaTwitter />, url: 'https://twitter.com/yourhandle', name: 'Twitter' },
-    {
-      icon: <FaEnvelope />,
-      url: "mailto:sundeep.reddy.n.2000@email.com",
-      name: "Email",
-    },
-  ];
-
   return (
     <section
       id="home"
@@ -89,7 +74,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 text-gray-300"
+            className="text-xl md:text-2xl mb-3 text-gray-300"
           >
             Full Stack Developer
           </motion.p>
@@ -100,37 +85,19 @@ export default function HeroSection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="mx-auto mt-5 md:mt-7"
+          className="mx-auto "
         >
-          <ul className="text-lg md:text-xl leading-relaxed text-gray-300 mb-8 text-clip ">
+          <ul className="ml-1 md:ml-2 text-lg md:text-xl leading-relaxed text-gray-300 mb-8 list-disc list">
             {aboutMe.map((item, index) => (
               <li
                 key={index}
-                className="text-lg md:text-xl leading-relaxed text-gray-300 "
+                className="text-lg md:text-xl leading-relaxed text-gray-300 text-justify"
               >
                 {item}
               </li>
             ))}
           </ul>
-
-          <div className="flex  gap-4  justify-center md:justify-start">
-            {socialLinks.map((link, index) => (
-              <motion.a
-                key={index}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                whileHover={{ scale: 1.2, color: "#60A5FA" }}
-                className="text-2xl text-gray-400 hover:text-blue-400 transition-colors"
-                aria-label={link.name}
-              >
-                {link.icon}
-              </motion.a>
-            ))}
-          </div>
+          <SocialLinks />
         </motion.div>
       </div>
     </section>

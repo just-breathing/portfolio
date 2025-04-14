@@ -6,8 +6,6 @@ import HeroSection from "@/components/home";
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
-      <Header />
-
       <main className="container mx-auto px-4 pt-24 pb-5">
         <HeroSection />
 

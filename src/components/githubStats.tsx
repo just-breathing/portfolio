@@ -15,12 +15,14 @@ export function GitHubStatsCard({ username }: { username: string }) {
         GitHub Activity
       </h3>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-self-center">
         {/* Stats Card */}
         <div className="bg-gray-900 p-3 rounded-lg">
           <Image
             src={`https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=dark&bg_color=1a1b26&title_color=60a5fa&text_color=ffffff&icon_color=60a5fa&hide_border=true`}
             alt={`GitHub stats for ${username}`}
+            width={500}
+            height={500}
             className="w-full h-auto"
             loading="lazy"
           />
@@ -31,20 +33,24 @@ export function GitHubStatsCard({ username }: { username: string }) {
           <Image
             src={`https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=dark&background=1a1b26&stroke=1a1b26&ring=60a5fa&fire=60a5fa&currStreakLabel=60a5fa&hide_border=true`}
             alt={`GitHub streak for ${username}`}
+            width={500}
+            height={500}
             className="w-full h-auto"
             loading="lazy"
           />
         </div>
-      </div>
 
-      {/* Languages Card - Full width below */}
-      <div className="mt-4 bg-gray-900 p-3 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
-        <Image
-          src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=1a1b26&title_color=60a5fa&text_color=ffffff&hide_border=true`}
-          alt={`Top languages for ${username}`}
-          className="w-full h-auto"
-          loading="lazy"
-        />
+        {/* Languages Card - Full width below */}
+        <div className=" bg-gray-900 p-3 rounded-lg ">
+          <Image
+            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=dark&bg_color=1a1b26&title_color=60a5fa&text_color=ffffff&hide_border=true`}
+            alt={`Top languages for ${username}`}
+            width={500}
+            height={500}
+            className="w-full h-auto"
+            loading="lazy"
+          />
+        </div>
       </div>
 
       <a

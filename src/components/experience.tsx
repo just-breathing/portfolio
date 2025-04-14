@@ -184,6 +184,14 @@ export default function Experience() {
                       layoutId={`card-${exp.id}`}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      animate={{
+                        scale: [1, 1.02, 1],
+                        transition: {
+                          repeat: Infinity,
+                          duration: 2,
+                          ease: "easeInOut",
+                        },
+                      }}
                       onClick={() => handleCardClick(exp)}
                       className="p-6 rounded-lg shadow-lg bg-gray-800 border border-gray-700 cursor-pointer"
                     >
@@ -200,7 +208,7 @@ export default function Experience() {
                           <p className="text-gray-400 text-sm">
                             {exp.positionType}
                           </p>
-                          <p className="text-gray-400 text-sm">
+                          <p className="text-gray-400 text-sm text-right">
                             {exp.location}
                           </p>
                         </div>
