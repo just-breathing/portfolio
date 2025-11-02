@@ -13,7 +13,6 @@ const socials = [
     url: "https://www.linkedin.com/in/sundeepreddyn/",
     name: "LinkedIn",
   },
-  // { icon: <FaTwitter />, url: 'https://twitter.com/yourhandle', name: 'Twitter' },
   {
     icon: <FaEnvelope />,
     url: "mailto:sundeep.reddy.n.2000@email.com",
@@ -23,7 +22,7 @@ const socials = [
 
 const SocialLinks = () => {
   return (
-    <div className="flex  gap-4  justify-center md:justify-start">
+    <div className="flex gap-4 justify-center md:justify-start">
       {socials.map((link, index) => (
         <motion.a
           key={index}
@@ -33,8 +32,15 @@ const SocialLinks = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.2, color: "#60A5FA" }}
-          className="text-2xl text-gray-400 hover:text-blue-400 transition-colors  "
+          whileHover={{ scale: 1.2 }}
+          className="text-2xl transition-colors"
+          style={{ color: "var(--muted)" }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.color = "var(--primary)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.color = "var(--muted)";
+          }}
           aria-label={link.name}
         >
           {link.icon}

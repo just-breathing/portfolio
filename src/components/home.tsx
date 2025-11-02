@@ -14,7 +14,10 @@ export const AnimatedString = ({ name }: { name: string }) => {
   const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   return (
-    <span className="text-blue-400 inline-flex flex-wrap justify-center">
+    <span
+      className="inline-flex flex-wrap justify-center"
+      style={{ color: "var(--primary)" }}
+    >
       {words.map((word, wordIndex) => (
         <motion.span
           key={wordIndex}
@@ -58,23 +61,46 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center bg-gray-900 px-4"
+      className="min-h-screen flex flex-col justify-center px-4 relative overflow-hidden"
+      style={{
+        backgroundColor: "var(--background)",
+      }}
     >
-      <div className="container mx-auto">
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, var(--foreground) 1px, transparent 1px)`,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center md:text-left"
         >
-          <h1 className="text-5xl font-bold mb-4 text-white">
+          <h1
+            className="text-5xl font-bold mb-4"
+            style={{ color: "var(--foreground)" }}
+          >
             Hi, I &apos;m <AnimatedString name="Sundeep Reddy Nallamilli" />
           </h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-3 text-gray-300"
+            className="text-xl md:text-2xl mb-3"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              fontWeight: "bold",
+            }}
           >
             Full Stack Developer
           </motion.p>
@@ -85,13 +111,16 @@ export default function HeroSection() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true, amount: 0.3 }}
-          className="mx-auto "
+          className="mx-auto"
         >
-          <ul className="ml-1 md:ml-2 text-lg md:text-xl leading-relaxed text-gray-300 mb-8 list-disc list">
+          <ul
+            className="ml-1 md:ml-2 text-lg md:text-xl leading-relaxed mb-8 list-disc list"
+            style={{ color: "var(--muted)" }}
+          >
             {aboutMe.map((item, index) => (
               <li
                 key={index}
-                className="text-lg md:text-xl leading-relaxed text-gray-300 text-justify"
+                className="text-lg md:text-xl leading-relaxed text-justify"
               >
                 {item}
               </li>

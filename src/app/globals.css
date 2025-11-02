@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light mode - Professional soft theme */
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+
+  /* Primary - Deep Blue */
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --primary-light: #60a5fa;
+
+  /* Secondary - Amber/Gold */
+  --secondary: #f59e0b;
+  --secondary-dark: #d97706;
+  --secondary-light: #fbbf24;
+
+  /* Accent - Cyan */
+  --accent: #0ea5e9;
+  --accent-dark: #0284c7;
+  --accent-light: #38bdf8;
+
+  /* Neutral colors */
+  --muted: #64748b;
+  --muted-light: #94a3b8;
+  --border: #cbd5e1;
+
+  /* Timeline colors */
+  --timeline-line: rgba(37, 99, 235, 0.3);
+  --timeline-dot: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+}
+
+/* Dark mode - manually set via class */
+.dark {
+  /* Dark mode - Deep Blue & Golden Yellow */
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+
+  /* Primary - Bright Blue */
+  --primary: #60a5fa;
+  --primary-dark: #3b82f6;
+  --primary-light: #93c5fd;
+
+  /* Secondary - Golden Yellow */
+  --secondary: #fbbf24;
+  --secondary-dark: #f59e0b;
+  --secondary-light: #fcd34d;
+
+  /* Accent - Bright Cyan */
+  --accent: #22d3ee;
+  --accent-dark: #06b6d4;
+  --accent-light: #67e8f9;
+
+  /* Neutral colors */
+  --muted: #94a3b8;
+  --muted-light: #cbd5e1;
+  --border: #475569;
+
+  /* Timeline colors */
+  --timeline-line: rgba(96, 165, 250, 0.4);
+  --timeline-dot: linear-gradient(135deg, #60a5fa 0%, #22d3ee 100%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-light: var(--secondary-light);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-muted: var(--muted);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--card-bg);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Shine animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+.animate-shine {
+  animation: shine 3s infinite;
 }
