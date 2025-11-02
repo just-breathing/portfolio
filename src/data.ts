@@ -19,13 +19,28 @@ const calculateDuration = (start: Date, end: Date | null) => {
   return months + (endDate.getMonth() - start.getMonth());
 };
 
+export const formatDuration = (months: number): string => {
+  if (months < 12) {
+    return `${months}mo`;
+  }
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  if (remainingMonths === 0) {
+    return `${years}yr`;
+  }
+
+  return `${years}yr ${remainingMonths}mo`;
+};
+
 export const experiences: ExperienceItem[] = [
   {
     id: 1,
-    title: "Full Stack Developer",
+    title: "Full Stack Engineer",
     company: "Blockhouse",
-    startDate: new Date(2024, 8, 17),
-    endDate: null,
+    startDate: new Date(2024, 8),
+    endDate: new Date(2025, 9),
     positionType: "Remote" as positionType,
     productLinks: [
       {
@@ -37,10 +52,16 @@ export const experiences: ExperienceItem[] = [
         name: "Moonport",
         link: "https://www.moonport.io/",
         description:
-          "A mobile investing platform that empowers you to build a personalized portfolio tailored to your financial goals and values. ",
+          "A mobile investing platform that empowers you to build a personalized portfolio tailored to your financial goals and values.",
       },
       {
-        name: "Blockhouse Dashboard",
+        name: "Blockhouse Crypto Dashboard",
+        link: "https://crypto-dashboard.blockhouse.app/",
+        description:
+          "Monitor SMA-based crypto trading performance and analytics in real-time",
+      },
+      {
+        name: "Blockhouse Equities Dashboard",
         link: "https://dev-dashboard.blockhouse.app/",
         description:
           "Advanced trading and analytics platform for institutional investors",
@@ -48,39 +69,53 @@ export const experiences: ExperienceItem[] = [
     ],
     location: "NYC",
     description:
-      "Developed and deployed full-stack web applications using  Next.js, Typescript, Tailwind CSS, Next Auth, Prisma, MongoDB, and Amplify",
+      "Developed real-time crypto trading dashboard and production-grade equities Order Management System with cutting-edge performance optimizations and cross-platform applications.",
     responsibilities: [
-      "Developed reusable and scalable components for pages and dashboards using Next.js (v14) to enhance maintainability and performance.",
-      "Integrated Next.js APIs and server actions to optimize data handling and improve application responsiveness.",
-      "Implemented dynamic rendering strategies, leveraging Client and Server Components to enhance user experience.",
-      "Utilized various rendering techniques, including Server-side Rendering (SSR), Client-side Rendering (CSR), Static Site Generation (SSG) to optimize performance and SEO.",
-      "Designed responsive and consistent user interfaces using Tailwind CSS for an improved UI/UX experience.",
-      "Implemented authentication and authorization mechanisms with NextAuth (v5 beta), incorporating middleware for secure access control.",
-      "Managed database interactions using Prisma ORM with MongoDB, enabling efficient CRUD operations.",
-      "Integrated Sentry for real-time error monitoring, with automated alerts sent to teams via Slack for rapid issue resolution.",
-      "Configured and maintained a monorepo (Turborepo) and set up GitHub Actions for automated build tests, ensuring code quality before deployment to production and key branches.",
-      "Used version control using Git, creating and reviewing pull requests via GitHub.",
-      "Conducted comprehensive end-to-end testing with Cypress, ensuring application stability and reliability.",
-      "Developed cross-platform mobile applications using React Native (Expo) for Android and iOS, utilizing EAS for streamlined deployment to the App Store and Google Play.",
-      "Tested native applications using Android emulators, iOS simulators, and physical iOS devices with Xcode, leveraging a personal Apple developer account.",
-      "Implemented an email invitation feature for password recovery and initial account creation, improving user onboarding and security.",
-      "Leveraged AWS Amplify to manage environment variables across multiple deployment branches, ensuring consistency across environments.",
+      "Developed real-time crypto trading dashboard processing 10,000+ WebSocket messages per second with sub-second latency, optimizing large dataset rendering (100,000+ data points) using Web Workers and WebAssembly for 3x faster risk calculations",
+      "Built production-grade equities Order Management System (OMS) with FastAPI backend and WebSocket architecture for real-time order tracking, scheduling, and execution analytics including TWAP/VWAP analysis",
+      "Created cross-platform applications using React Native/Expo (mobile), Tauri (desktop), and Plasmo (browser extension) with Plaid integration for secure trade data retrieval",
+      "Implemented reusable Next.js components with dynamic rendering (SSR, CSR, SSG) and Server Actions to securely proxy REST APIs without exposing endpoints to client",
+      "Optimized application performance by debugging and resolving memory leaks, thread-related issues, and race conditions in WebSocket connections and worker threads",
+      "Designed PostgreSQL and MongoDB database schemas with Prisma ORM, managing migrations, query optimization, and high-throughput operations",
+      "Built comprehensive data visualization using Recharts for equity curves, performance metrics, Sharpe/Sortino ratios, and slippage distribution",
+      "Implemented authentication systems with NextAuth and Better Auth, including email invitation feature with secure token generation and middleware-based access control",
+      "Integrated smart order routing (SOR) algorithms and auto-flagging system with configurable rules for monitoring order performance metrics",
+      "Configured CI/CD pipelines with GitHub Actions and Turborepo monorepo, ensuring automated testing with Cypress before deployment",
+      "Managed AWS deployments: Amplify for frontend hosting with custom domain mapping, EC2 instances for backend services with Certbot SSL certificates and Nginx reverse proxy configurations",
+      "Debugged production issues including memory leaks and optimized bundle sizes by 40% through code splitting and tree shaking, improving load times and runtime performance",
+      "Tested React Native applications using Android/iOS emulators and physical devices",
     ],
     skills: [
-      "Next.js (v14) - Middleware, SSR, CSR, SSG, ISR, Server Actions",
-      "Typescript",
+      "Next.js",
+      "React.js",
+      "TypeScript",
       "Tailwind CSS",
-      "React Native (Expo)",
-      "Shad CN",
+      "FastAPI",
+      "Python",
+      "WebSocket",
+      "REST APIs",
       "Prisma ORM",
+      "PostgreSQL",
       "MongoDB",
-      "NextAuth (v5 beta)",
-
+      "NextAuth",
+      "Better Auth",
+      "Web Workers",
+      "WebAssembly",
+      "Recharts",
+      "Zustand",
+      "React Native",
+      "Expo",
+      "Tauri",
+      "Plasmo",
+      "Plaid",
+      "GitHub Actions",
+      "Turborepo",
       "Cypress",
       "Sentry",
-      "Git",
-      "GitHub",
       "AWS Amplify",
+      "AWS EC2",
+      "Nginx",
+      "Certbot",
     ],
   },
   {
@@ -91,74 +126,50 @@ export const experiences: ExperienceItem[] = [
     positionType: "Remote" as positionType,
     productLinks: [
       {
-        name: "Main Website",
+        name: "Data Sense",
         link: "https://datasenseit.com/",
         description:
-          " IT consulting and staffing firm  whose mission is shaping technological solutions that drive businesses forward",
+          "IT consulting and staffing firm whose mission is shaping technological solutions that drive businesses forward",
       },
     ],
     startDate: new Date(2024, 1),
     endDate: new Date(2024, 8),
     description:
-      "Developed  full-stack web applications using  Next.js, Typescript, Tailwind CSS, Next Auth, Prisma, PostgreSQL, Node.js APIS, ",
+      "Developed modern, responsive web interfaces using React.js, Tailwind CSS, and ShadCN component library with efficient state management and database operations.",
     responsibilities: [
-      "Worked with React, Tailwind CSS, and ShadCN to build modern, responsive web interfaces.",
-      "Built reusable components to streamline development and improve code maintainability.",
-      "Utilized React Context API for state management, allowing data sharing across multiple components.",
-      "Implemented CRUD operations using Prisma ORM with a PostgreSQL database for efficient data management.",
-      "Developed backend services using Node.js and implemented microservice architecture for scalable and decoupled systems.",
-      "Ensured seamless integration between frontend and backend by adhering to RESTful API best practices.",
-      "Optimized application performance and scalability by leveraging asynchronous programming in Node.js.",
-      "Collaborated on version control with Git, following best practices in code review and pull request management.",
-      "Used Postman for API testing and validation of microservice interactions.",
-      "Followed Agile development methodologies, participating in sprints, stand-ups, and code reviews.",
+      "Developed modern, responsive web interfaces using React.js, Tailwind CSS, and ShadCN component library",
+      "Built reusable components to streamline development workflow and improve code maintainability across multiple projects",
+      "Utilized React Context API for state management, enabling efficient data sharing across multiple components",
+      "Implemented CRUD operations using Prisma ORM with PostgreSQL database for efficient data management",
     ],
     skills: [
-      "React",
+      "React.js",
+      "TypeScript",
       "Tailwind CSS",
       "ShadCN",
-      "Prisma",
+      "Context API",
+      "Prisma ORM",
       "PostgreSQL",
-      "Node.js",
-      "Microservice Architecture",
-      "Git",
     ],
   },
   {
     id: 3,
     title: "Software Developer Intern",
     company: "ValueLabs",
-    location: "Telangana, India",
-
+    location: "Hyderabad, India",
     startDate: new Date(2022, 1),
     endDate: new Date(2022, 4),
     positionType: "Onsite" as positionType,
+    productLinks: [],
     description:
-      "Worked with Selenium and Java (cron jobs) to automate internal email processes and improve system performance.",
-    productLinks: [
-      {
-        name: "",
-        link: "https://www.valuelabs.com/emails",
-        description: "This is an internal email project running on VM",
-      },
-    ],
+      "Developed and maintained web applications using React.js for frontend and Node.js for backend services, collaborating with cross-functional teams.",
     responsibilities: [
-      "Automated internal email processes using cron jobs, reducing manual effort by over 90%.",
-      "Developed and maintained software features using Java and Selenium, contributing to improved system performance and reliability.",
-      "Participated in code reviews and debugging sessions, ensuring the delivery of high-quality software.",
-      "Enhanced skills in agile methodologies, teamwork, and technical documentation through active participation in project planning and execution.",
-      "Gained practical experience in version control (Git) and containerization (Docker).",
+      "Developed and maintained web applications using React.js for frontend and Node.js for backend services",
+      "Collaborated with cross-functional teams to deliver high-quality software solutions following agile methodologies",
+      "Participated in code reviews and implemented best practices for code quality and maintainability",
+      "Gained hands-on experience with full-stack development using JavaScript ecosystem and MongoDB database",
     ],
-    skills: [
-      "Java",
-      "Selenium",
-      "Git",
-      "Docker",
-      "Agile methodologies",
-      "Code reviews",
-      "Debugging",
-      "Internal email process automation",
-    ],
+    skills: ["JavaScript", "React.js", "Node.js", "Express.js", "MongoDB"],
   },
 ].map((exp) => ({
   ...exp,
